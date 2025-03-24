@@ -115,3 +115,60 @@
 #requests ul li:last-child {
   border-bottom: none;
 }
+/* Summary Section - Container */
+.summary-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin-top: 15px;
+}
+
+/* Centering Discount Section */
+.discount-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Total Section */
+.total-section {
+  font-weight: bold;
+  color: red;
+  display: flex;
+  align-items: center;
+}
+
+/* Total Label Styling */
+.total-label {
+  font-weight: bold;
+  color: red;
+}
+
+/* NumberBox Custom Styling */
+.dx-numberbox {
+  border-radius: 5px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .summary-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .discount-section {
+    width: 100%;
+    justify-content: center;
+  }
+  .total-section {
+    width: 100%;
+    justify-content: center;
+  }
+}
+

@@ -11,6 +11,7 @@ import {
 import { SelectBox } from 'devextreme-react/select-box';
 import CustomStore from 'devextreme/data/custom_store';
 import { formatDate } from 'devextreme/localization';
+import { NumberBox } from "devextreme-react/number-box";
 import '../App.css';
 
 const URL = 'https://js.devexpress.com/Demos/NetCore/api/DataGridWebApi';
@@ -18,6 +19,10 @@ const REFRESH_MODES = ['full', 'reshape', 'repaint'];
 
 const Table = () => {
   const [refreshMode, setRefreshMode] = useState('reshape');
+  const [discountAmount, setDiscountAmount] = useState(0);
+  const [discountPercentage, setDiscountPercentage] = useState(0);
+  const [total, setTotal] = useState(119771.25); // Example total
+
 
   const sendRequest = useCallback(async (url, method = 'GET', data = {}) => {
     const request = { method, credentials: 'include' };
@@ -68,14 +73,37 @@ const Table = () => {
           <TotalItem column="Freight" summaryType="sum" valueFormat="#0.00" />
         </Summary>
       </DataGrid>
+      <div className="summary-container">
+  {/* Centered Discount Section */}
+  <div className="discount-section">
+    <span>Discount</span>
+    <NumberBox
+      value={discountAmount}
+      onValueChanged={(e) => setDiscountAmount(e.value)}
+      format="₹ #0.00"
+      width={80}
+    />
+    <NumberBox
+      value={discountPercentage}
+      onValueChanged={(e) => setDiscountPercentage(e.value)}
+      format="#0.00 %"
+      width={60}
+    />
+  </div>
 
-      <div className="options">
-        <div className="caption">Options</div>
-        <div className="option">
-          <span>Refresh Mode: </span>
-          <SelectBox value={refreshMode} items={REFRESH_MODES} onValueChanged={(e) => setRefreshMode(e.value)} />
-        </div>
-      </div>
+  {/* Total Section on the Right */}
+  <div className="total-section">
+    <span className="total-label">Total</span>
+    <NumberBox
+      value={total}
+      readOnly
+      format="#,##0.00"
+      width={120}
+      className="total-amount"
+    />
+  </div>
+</div>
+
     </>
   );
 };
