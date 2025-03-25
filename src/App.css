@@ -149,6 +149,7 @@
 .total-label {
   font-weight: bold;
   color: red;
+  margin: 8px;
 }
 
 /* NumberBox Custom Styling */

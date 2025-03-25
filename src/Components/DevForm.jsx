@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import 'devextreme/dist/css/dx.common.css';
 import 'devextreme/dist/css/dx.light.css';
 import Form, { SimpleItem, GroupItem, NumericRule } from 'devextreme-react/form';
+import { CheckBox } from 'devextreme-react/check-box';
 
 
 const employee = {
@@ -47,12 +48,18 @@ const DevForm = () => {
             <SimpleItem dataField="docNo" label={{ text: "Doc No." }} />
             <SimpleItem dataField="account" label={{ text: "Account" }} editorType="dxSelectBox" editorOptions={{ items: ["CUS0034 - Quality Admin", "ACC1001 - John Doe", "ACC2002 - Alpha Corp"], value: "CUS0034 - Quality Admin" }} />
             <SimpleItem dataField="credit" label={{ text: "Credit" }} />
-            <SimpleItem dataField="printRequired" editorType="dxCheckBox" label={{ text: "Print Required" }} />
-            
+            {/* <SimpleItem dataField="printRequired" editorType="dxCheckBox" label={{ text: "Print Required" }} /> */}
+            <SimpleItem dataField="printRequired" label={{ text: "Print Required" }}>
+              <CheckBox />
+            </SimpleItem>
+
           </GroupItem>
 
           <GroupItem>
-            <SimpleItem dataField="docNo2" label={{ text: "Doc Date" }} editorType="dxDateBox" />
+            <SimpleItem dataField="docNo2" label={{ text: "Doc Date" }} editorType="dxDateBox" editorOptions={{
+              displayFormat: "dd/MMM/yyyy", // Format as Day/Month/Year
+              type: "date", // Ensures only date selection
+            }} />
             <SimpleItem dataField="taxMode2" label={{ text: "Tax Mode" }} editorType="dxSelectBox" editorOptions={{ items: ["Zero Tax", "GST 5%", "GST 12%", "VAT 10%", "Exempted"], value: "Zero Tax" }} />
             <SimpleItem dataField="referrer2" label={{ text: "Referrer" }} />
           </GroupItem>
