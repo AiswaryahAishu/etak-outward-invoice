@@ -1,0 +1,45 @@
+.progress-bar {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 5px;
+  }
+  
+  .step {
+    position: relative;
+    padding: 8px 16px;
+    color: white;
+    font-weight: bold;
+    /* border-radius: 4px 0 0 4px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 50px;
+    clip-path: polygon(0% 0%, 70% 0%, 100% 50%, 70% 100%, 0% 100%, 20% 50%);
+  }
+  
+  .step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: -10px;
+    /* top: 50%;
+    transform: translateY(-50%); */
+    border-left: 10px solid white;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    z-index: 1;
+    clip-path: polygon(0% 0%, 70% 0%, 100% 50%, 70% 100%, 0% 100%, 20% 50%);
+  }
+  
+  .step:not(:first-child) {
+    margin-left: -10px;
+    /* border-radius: 0 4px 4px 0; */
+    clip-path: polygon(0% 0%, 70% 0%, 100% 50%, 70% 100%, 0% 100%, 20% 50%);
+  }
+  
+  .status {
+    margin-left: 10px;
+    color: gray;
+    font-weight: bold;
+  }
+  
